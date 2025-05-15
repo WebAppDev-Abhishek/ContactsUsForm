@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contact Details</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Religion</th>
+        <th>Nationality</th>
+        <th>Marital Status</th>
+        <th>Languages Known</th>
+        <th>Highest Qualification</th>
+        <th>Experience</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (contacts && contacts.length > 0) { %>
+        <% contacts.forEach((contact, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= contact.name %></td>
+            <td><%= contact.dob || '-' %></td>
+            <td><%= contact.gender || '-' %></td>
+            <td><%= contact.religion || '-' %></td>
+            <td><%= contact.nationality || '-' %></td>
+            <td><%= contact.marital_status || '-' %></td>
+            <td><%= contact.languages || '-' %></td>
+            <td><%= contact.qualification || '-' %></td>
+            <td><%= contact.experience || '-' %></td>
+            <td><%= new Date(contact.created_at).toLocaleString() %></td>
+          </tr>
+        <% }); %>
+      <% } else { %>
+        <tr><td colspan="11">No contacts found.</td></tr>
+      <% } %>
+    </tbody>
+  </table>
+  <p><a href="/">Go back to the form</a></p>
+</body>
+</html>
